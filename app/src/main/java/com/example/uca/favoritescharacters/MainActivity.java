@@ -4,6 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -19,21 +21,15 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+    ArrayList<Personajes> charactersList;
+    RecyclerView recyclerViewPersonajes;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+
     private ViewPager mViewPager;
 
     @Override
@@ -65,6 +61,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        charactersList = new ArrayList<>();
+        recyclerViewPersonajes = findViewById(R.id.recyclerview);
+        recyclerViewPersonajes.setLayoutManager(new LinearLayoutManager(this));
+
+        fillCharcters();
+
+        PersonajesAdapter adapter = new PersonajesAdapter(charactersList);
+        recyclerViewPersonajes.setAdapter(adapter);
+
+    }
+
+    private void fillCharcters() {
+        charactersList.add(new Personajes("Sombra", "", R.drawable.sombra));
+        charactersList.add(new Personajes("Bastion", "", R.drawable.bastion));
+        charactersList.add(new Personajes("Genji", "", R.drawable.genji));
+        charactersList.add(new Personajes("Hanzo", "", R.drawable.hanzo));
+        charactersList.add(new Personajes("Junkrat", "", R.drawable.junkrat));
+        charactersList.add(new Personajes("Mccree", "", R.drawable.mccree));
+        charactersList.add(new Personajes("Mei", "", R.drawable.mei));
+        charactersList.add(new Personajes("Pharah", "", R.drawable.pharah));
     }
 
 
