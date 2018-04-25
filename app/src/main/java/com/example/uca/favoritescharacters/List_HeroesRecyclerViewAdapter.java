@@ -21,7 +21,7 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
 
     @Override
     public ViewHolderPersonajes onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_main, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_list, null, false);
         return new ViewHolderPersonajes(view);
     }
 
