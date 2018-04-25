@@ -11,40 +11,59 @@ import java.util.ArrayList;
 
 public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_HeroesRecyclerViewAdapter.ViewHolderPersonajes>{
 
-    ArrayList<Personajes> listaPersonajes;
+    private final Personajes [] listaPersonajes;
+    private final List_Fragment.OnListFragmentInteractionListener interactionListener;
 
-    public List_HeroesRecyclerViewAdapter(ArrayList<Personajes> listaPersonajes) {
+    public List_HeroesRecyclerViewAdapter(Personajes[] listaPersonajes, List_Fragment.OnListFragmentInteractionListener interactionListener) {
         this.listaPersonajes = listaPersonajes;
+        this.interactionListener = interactionListener;
     }
 
     @Override
     public ViewHolderPersonajes onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_list, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_main, null, false);
         return new ViewHolderPersonajes(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderPersonajes holder, int position) {
-        holder.nombre.setText(listaPersonajes.get(position).getName());
-        holder.descripcion.setText(listaPersonajes.get(position).getDescription());
-        holder.foto.setImageResource(listaPersonajes.get(position).getImagen());
+    public void onBindViewHolder(final ViewHolderPersonajes holder, int position) {
+       Personajes heroes = listaPersonajes[position];
+       holder.heroeItem = heroes;
+       holder.nombre.setText(heroes.getName());
+       holder.descripcion.setText(heroes.getDescription());
+       holder.foto.setImageResource(heroes.getImagen());
+
+       holder.view.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if (null != interactionListener) {
+                   // Notify the active callbacks interface (the activity, if the
+                   // fragment is attached to one) that an item has been selected.
+                   interactionListener.onListFragmentInteraction(holder.heroeItem);
+               }
+           }
+       });
+
 
     }
 
     @Override
     public int getItemCount() {
-        return listaPersonajes.size();
+        return listaPersonajes.length;
     }
 
     public class ViewHolderPersonajes extends RecyclerView.ViewHolder {
 
-        TextView nombre, descripcion;
-        ImageView foto;
+        public Personajes heroeItem;
+        public final View view;
+        public final TextView nombre, descripcion;
+        public final ImageView foto;
 
 
         public ViewHolderPersonajes(View itemView) {
             super(itemView);
 
+            view = itemView;
             nombre = (TextView) itemView.findViewById(R.id.tvNombre);
             descripcion = (TextView) itemView.findViewById(R.id.tvDescripcion);
             foto = (ImageView) itemView.findViewById(R.id.imagen);
