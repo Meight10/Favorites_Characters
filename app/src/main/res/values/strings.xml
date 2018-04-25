@@ -5,4 +5,22 @@
 
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="character1">Sombra</string>
+    <string name="character2">Bastion</string>
+    <string name="character3">Genji</string>
+    <string name="character4">Hanzo</string>
+    <string name="character5">Junkrat</string>
+    <string name="character6">Mccree</string>
+    <string name="character7">Mei</string>
+    <string name="character8">Pharah</string>
+
+    <string name="character1Description">ROLE: OFFENSE</string>
+    <string name="character2Description">ROLE: DEFENSE</string>
+    <string name="character3Description">ROLE: OFFENSE</string>
+    <string name="character4Description">ROLE: DEFENSE</string>
+    <string name="character5Description">ROLE: DEFENSE</string>
+    <string name="character6Description">ROLE: OFFENSE</string>
+    <string name="character7Description">ROLE: DEFENSE</string>
+    <string name="character8Description">ROLE: OFFENSE</string>
 </resources>
