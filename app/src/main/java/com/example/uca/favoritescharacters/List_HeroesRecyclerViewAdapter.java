@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PersonajesAdapter extends RecyclerView.Adapter<PersonajesAdapter.ViewHolderPersonajes>{
+public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_HeroesRecyclerViewAdapter.ViewHolderPersonajes>{
 
     ArrayList<Personajes> listaPersonajes;
 
-    public PersonajesAdapter(ArrayList<Personajes> listaPersonajes) {
+    public List_HeroesRecyclerViewAdapter(ArrayList<Personajes> listaPersonajes) {
         this.listaPersonajes = listaPersonajes;
     }
 
