@@ -41,29 +41,26 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_2));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
 
         //define viewPager
         final ViewPager viewPager = (ViewPager) findViewById(R.id.container);
 
         //fill the list
-        charactersList = createCharactersListModel();
+        Personajes[] charactersListModels0 = createCharactersListModel();
+        Personajes[] charactersListModels1 = createCharactersListModel();
         createCharactersListModel();
 
 
         //adding a adapter to viewPager
         final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount(), charactersList);
+                (getSupportFragmentManager(), tabLayout.getTabCount(), charactersListModels0, charactersListModels1);
 
         viewPager.setAdapter(adapter);
 
         //Listener
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(getOnTabSelectedListener(viewPager));
-
-
-
-
 
 
     }
@@ -110,19 +107,18 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
 
         List<Personajes> heroes =  new ArrayList<>();
 
-        heroes.add(new Personajes("Sombra", "", R.drawable.sombra));
-        heroes.add(new Personajes("Bastion", "", R.drawable.bastion));
-        heroes.add(new Personajes("Genji", "", R.drawable.genji));
-        heroes.add(new Personajes("Hanzo", "", R.drawable.hanzo));
-        heroes.add(new Personajes("Junkrat", "", R.drawable.junkrat));
-        heroes.add(new Personajes("Mccree", "", R.drawable.mccree));
-        heroes.add(new Personajes("Mei", "", R.drawable.mei));
-        heroes.add(new Personajes("Pharah", "", R.drawable.pharah));
+        heroes.add(new Personajes(getString(R.string.character1), getString(R.string.character1Description), R.drawable.sombra));
+        heroes.add(new Personajes(getString(R.string.character2), getString(R.string.character2Description), R.drawable.bastion));
+        heroes.add(new Personajes(getString(R.string.character3), getString(R.string.character3Description), R.drawable.genji));
+        heroes.add(new Personajes(getString(R.string.character4), getString(R.string.character4Description), R.drawable.hanzo));
+        heroes.add(new Personajes(getString(R.string.character5), getString(R.string.character5Description), R.drawable.junkrat));
+        heroes.add(new Personajes(getString(R.string.character6), getString(R.string.character6Description), R.drawable.mccree));
+        heroes.add(new Personajes(getString(R.string.character7), getString(R.string.character7Description), R.drawable.mei));
+        heroes.add(new Personajes(getString(R.string.character8), getString(R.string.character8Description), R.drawable.pharah));
 
         return heroes.toArray(new Personajes[heroes.size()]);
     }
 
 
-    Personajes[] charactersList;
 
 }
