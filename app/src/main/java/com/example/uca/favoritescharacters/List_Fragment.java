@@ -35,17 +35,6 @@ public class List_Fragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab1_list, container, false);
-
-        Context ctx = rootView.getContext();
-        RecyclerView recyclerView = (RecyclerView)rootView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
-        recyclerView.setAdapter(new List_HeroesRecyclerViewAdapter(charactersModels, interactionListener));
-
-        return rootView;
-    }
-    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -53,6 +42,18 @@ public class List_Fragment extends Fragment{
             throw new RuntimeException("You must to send a dummyModels ");
         }
         charactersModels = (Personajes[]) getArguments().getParcelableArray(KEY_MODEL);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.from(container.getContext()).inflate(R.layout.tab1_main, container, false);
+
+        Context ctx = rootView.getContext();
+        RecyclerView recyclerView = (RecyclerView)rootView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
+        recyclerView.setAdapter(new List_HeroesRecyclerViewAdapter(charactersModels, interactionListener));
+
+        return rootView;
     }
 
     @Override
