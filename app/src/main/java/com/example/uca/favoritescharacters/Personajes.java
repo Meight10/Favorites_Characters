@@ -1,10 +1,13 @@
 package com.example.uca.favoritescharacters;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by uca on 04-23-18.
  */
 
-public class Personajes {
+public class Personajes implements Parcelable{
 
     private String name;
     private String description;
@@ -43,5 +46,15 @@ public class Personajes {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
