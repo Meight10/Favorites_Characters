@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#d95f14</color>
 
     <color name="background">#1a1d24</color>
-    <color name="backgroundCardView">#0a1c2a</color>
+    <color name="backgroundCardView">#e8143f61</color>
 
-    <color name="strings">#e65c5f64</color>
+    <color name="strings">#f1a9adb4</color>
 </resources>
