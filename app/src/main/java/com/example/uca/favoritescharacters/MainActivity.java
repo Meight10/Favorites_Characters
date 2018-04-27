@@ -115,6 +115,24 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         heroes.add(new Personajes(getString(R.string.character6), getString(R.string.character6Description), R.drawable.mccree));
         heroes.add(new Personajes(getString(R.string.character7), getString(R.string.character7Description), R.drawable.mei));
         heroes.add(new Personajes(getString(R.string.character8), getString(R.string.character8Description), R.drawable.pharah));
+        heroes.add(new Personajes(getString(R.string.character9), getString(R.string.character9Description), R.drawable.sombra));
+        heroes.add(new Personajes(getString(R.string.character10), getString(R.string.character10Description), R.drawable.bastion));
+        heroes.add(new Personajes(getString(R.string.character11), getString(R.string.character11Description), R.drawable.genji));
+        heroes.add(new Personajes(getString(R.string.character12), getString(R.string.character12Description), R.drawable.hanzo));
+        heroes.add(new Personajes(getString(R.string.character13), getString(R.string.character13Description), R.drawable.junkrat));
+        heroes.add(new Personajes(getString(R.string.character14), getString(R.string.character14Description), R.drawable.mccree));
+        heroes.add(new Personajes(getString(R.string.character15), getString(R.string.character15Description), R.drawable.mei));
+        heroes.add(new Personajes(getString(R.string.character16), getString(R.string.character16Description), R.drawable.pharah));
+        heroes.add(new Personajes(getString(R.string.character17), getString(R.string.character17Description), R.drawable.sombra));
+        heroes.add(new Personajes(getString(R.string.character18), getString(R.string.character18Description), R.drawable.bastion));
+        heroes.add(new Personajes(getString(R.string.character19), getString(R.string.character19Description), R.drawable.genji));
+        heroes.add(new Personajes(getString(R.string.character20), getString(R.string.character20Description), R.drawable.hanzo));
+        heroes.add(new Personajes(getString(R.string.character21), getString(R.string.character21Description), R.drawable.junkrat));
+        heroes.add(new Personajes(getString(R.string.character22), getString(R.string.character22Description), R.drawable.mccree));
+        heroes.add(new Personajes(getString(R.string.character23), getString(R.string.character23Description), R.drawable.mei));
+        heroes.add(new Personajes(getString(R.string.character24), getString(R.string.character24Description), R.drawable.pharah));
+
+        heroes.add(onNewIntent(Personajes intent = new Personajes());)
 
         return heroes.toArray(new Personajes[heroes.size()]);
     }
