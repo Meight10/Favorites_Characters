@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         heroes.add(new Personajes(getString(R.string.character23), getString(R.string.character23Description), R.drawable.mei));
         heroes.add(new Personajes(getString(R.string.character24), getString(R.string.character24Description), R.drawable.pharah));
 
-        heroes.add(onNewIntent(Personajes intent = new Personajes());)
+
 
         return heroes.toArray(new Personajes[heroes.size()]);
     }
