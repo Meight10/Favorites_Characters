@@ -14,6 +14,25 @@
     <string name="character6">Mccree</string>
     <string name="character7">Mei</string>
     <string name="character8">Pharah</string>
+    <string name="character9">Reaper</string>
+    <string name="character10">Soldier76</string>
+    <string name="character11">Torbjorn</string>
+    <string name="character12">WIDOWMAKER</string>
+    <string name="character13">D.VA</string>
+    <string name="character14">ORISA</string>
+    <string name="character15">REINHARDT</string>
+    <string name="character16">ROADHOG</string>
+    <string name="character17">WINSTON</string>
+    <string name="character18">ZARYA</string>
+    <string name="character19">ANA</string>
+    <string name="character20">BRIGITTE</string>
+    <string name="character21">LÚCIO</string>
+    <string name="character22">MERCY</string>
+    <string name="character23">MOIRA</string>
+    <string name="character24">SYMMETRA</string>
+    <string name="character25">ZENYATTA</string>
+
+
 
     <string name="character1Description">ROLE: OFFENSE</string>
     <string name="character2Description">ROLE: DEFENSE</string>
@@ -23,4 +42,23 @@
     <string name="character6Description">ROLE: OFFENSE</string>
     <string name="character7Description">ROLE: DEFENSE</string>
     <string name="character8Description">ROLE: OFFENSE</string>
+    <string name="character9Description">ROLE: OFFENSE</string>
+    <string name="character10Description">ROLE: OFFENSE</string>
+    <string name="character11Description">ROLE: OFFENSE</string>
+    <string name="character12Description">ROLE: OFFENSE</string>
+    <string name="character13Description">ROLE: OFFENSE</string>
+    <string name="character14Description">ROLE: OFFENSE</string>
+    <string name="character15Description">ROLE: OFFENSE</string>
+    <string name="character16Description">ROLE: OFFENSE</string>
+    <string name="character17Description">ROLE: OFFENSE</string>
+    <string name="character18Description">ROLE: OFFENSE</string>
+    <string name="character19Description">ROLE: OFFENSE</string>
+    <string name="character20Description">ROLE: OFFENSE</string>
+    <string name="character21Description">ROLE: OFFENSE</string>
+    <string name="character22Description">ROLE: OFFENSE</string>
+    <string name="character23Description">ROLE: OFFENSE</string>
+    <string name="character24Description">ROLE: OFFENSE</string>
+    <string name="character25Description">ROLE: OFFENSE</string>
+
+
 </resources>
