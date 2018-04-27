@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FavoritesCharacters</string>
+    <string name="app_name">Heroes</string>
     <string name="tab_text_1">Heroes</string>
     <string name="tab_text_2">Favorites</string>
 
@@ -31,6 +31,8 @@
     <string name="character23">MOIRA</string>
     <string name="character24">SYMMETRA</string>
     <string name="character25">ZENYATTA</string>
+    <string name="character26">TRACER</string>
+    <string name="character27">DOOMFIST</string>
 
 
 
@@ -44,21 +46,23 @@
     <string name="character8Description">ROLE: OFFENSE</string>
     <string name="character9Description">ROLE: OFFENSE</string>
     <string name="character10Description">ROLE: OFFENSE</string>
-    <string name="character11Description">ROLE: OFFENSE</string>
-    <string name="character12Description">ROLE: OFFENSE</string>
-    <string name="character13Description">ROLE: OFFENSE</string>
-    <string name="character14Description">ROLE: OFFENSE</string>
-    <string name="character15Description">ROLE: OFFENSE</string>
-    <string name="character16Description">ROLE: OFFENSE</string>
-    <string name="character17Description">ROLE: OFFENSE</string>
-    <string name="character18Description">ROLE: OFFENSE</string>
-    <string name="character19Description">ROLE: OFFENSE</string>
-    <string name="character20Description">ROLE: OFFENSE</string>
-    <string name="character21Description">ROLE: OFFENSE</string>
-    <string name="character22Description">ROLE: OFFENSE</string>
-    <string name="character23Description">ROLE: OFFENSE</string>
-    <string name="character24Description">ROLE: OFFENSE</string>
-    <string name="character25Description">ROLE: OFFENSE</string>
+    <string name="character11Description">ROLE: DEFENSE</string>
+    <string name="character12Description">ROLE: DEFENSE</string>
+    <string name="character13Description">ROLE: TANK</string>
+    <string name="character14Description">ROLE: TANK</string>
+    <string name="character15Description">ROLE: TANK</string>
+    <string name="character16Description">ROLE: TANK</string>
+    <string name="character17Description">ROLE: TANK</string>
+    <string name="character18Description">ROLE: TANK</string>
+    <string name="character19Description">ROLE: SUPPORT</string>
+    <string name="character20Description">ROLE: SUPPORT</string>
+    <string name="character21Description">ROLE: SUPPORT</string>
+    <string name="character22Description">ROLE: SUPPORT</string>
+    <string name="character23Description">ROLE: SUPPORT</string>
+    <string name="character24Description">ROLE: SUPPORT</string>
+    <string name="character25Description">ROLE: SUPPORT</string>
+    <string name="character26Description">ROLE: OFFENSE</string>
+    <string name="character27Description">ROLE: OFFENSE</string>
 
 
 </resources>
