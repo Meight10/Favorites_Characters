@@ -14,10 +14,13 @@ public class Personajes implements Parcelable{
 
     private int imagen;
 
-    public Personajes(String name, String description, int imagen) {
+    private boolean favorite;
+
+    public Personajes(String name, String description, int imagen, boolean favorite) {
         this.name = name;
         this.description = description;
         this.imagen = imagen;
+        this.favorite = favorite;
     }
 
     public Personajes(){
@@ -47,6 +50,10 @@ public class Personajes implements Parcelable{
     public void setImagen(int imagen) {
         this.imagen = imagen;
     }
+
+    public boolean getFavorite(){return favorite;}
+
+    public void setFavorite(boolean favorite){this.favorite = favorite;}
 
     @Override
     public int describeContents() {

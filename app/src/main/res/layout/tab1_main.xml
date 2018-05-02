@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/recyclerview"
     app:layoutManager="LinearLayoutManager"
+    android:background="@color/background"
     tools:context="com.example.uca.favoritescharacters.List_Fragment"
     tools:listitem="@layout/tab1_list" />
 

@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements List_Fragment.OnListFragmentInteractionListener{
 
 
+    private ImageView image;
+    public static Personajes[] charactersListModels0;
+    public static List<Personajes> charactersListModels1;
+
+
 
 
     @Override
@@ -37,33 +43,46 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //define TabLayout
+        //fill the list
+        if(savedInstanceState == null){
+            charactersListModels0 = createCharactersListModes0();
+            charactersListModels1 = new ArrayList<>();
+        }
+
+        initComponents();
+
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private void initComponents(){
+
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.container);
+
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_2));
 
+        List_Fragment fragment1 = List_Fragment.newInstance(charactersListModels0);
+        List_Fragment fragment2 = List_Fragment.newInstance(charactersListModels1.toArray
+                (new Personajes[charactersListModels1.size()]));
+        System.out.println(charactersListModels1.toString() + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 
-        //define viewPager
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.container);
-
-        //fill the list
-        Personajes[] charactersListModels0 = createCharactersListModel();
-        Personajes[] charactersListModels1 = createCharactersListModel();
-        createCharactersListModel();
-
-
-        //adding a adapter to viewPager
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount(), charactersListModels0, charactersListModels1);
-
+        adapter.addFragment(fragment1);
+        adapter.addFragment(fragment2);
         viewPager.setAdapter(adapter);
 
-        //Listener
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(getOnTabSelectedListener(viewPager));
-
-
     }
+
+
+
 
     /**
      * Listener for tab selected
@@ -103,39 +122,46 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
     }
 
     // model for test purpose
-    private Personajes[] createCharactersListModel() {
+    private Personajes[] createCharactersListModes0() {
 
         List<Personajes> heroes =  new ArrayList<>();
 
-        heroes.add(new Personajes(getString(R.string.character1), getString(R.string.character1Description), R.drawable.sombra));
-        heroes.add(new Personajes(getString(R.string.character2), getString(R.string.character2Description), R.drawable.bastion));
-        heroes.add(new Personajes(getString(R.string.character3), getString(R.string.character3Description), R.drawable.genji));
-        heroes.add(new Personajes(getString(R.string.character4), getString(R.string.character4Description), R.drawable.hanzo));
-        heroes.add(new Personajes(getString(R.string.character5), getString(R.string.character5Description), R.drawable.junkrat));
-        heroes.add(new Personajes(getString(R.string.character6), getString(R.string.character6Description), R.drawable.mccree));
-        heroes.add(new Personajes(getString(R.string.character7), getString(R.string.character7Description), R.drawable.mei));
-        heroes.add(new Personajes(getString(R.string.character8), getString(R.string.character8Description), R.drawable.pharah));
-        heroes.add(new Personajes(getString(R.string.character9), getString(R.string.character9Description), R.drawable.reaper));
-        heroes.add(new Personajes(getString(R.string.character10), getString(R.string.character10Description), R.drawable.soldier76));
-        heroes.add(new Personajes(getString(R.string.character11), getString(R.string.character11Description), R.drawable.torbjorn));
-        heroes.add(new Personajes(getString(R.string.character12), getString(R.string.character12Description), R.drawable.widowmaker));
-        heroes.add(new Personajes(getString(R.string.character13), getString(R.string.character13Description), R.drawable.d_va));
-        heroes.add(new Personajes(getString(R.string.character14), getString(R.string.character14Description), R.drawable.orisa));
-        heroes.add(new Personajes(getString(R.string.character15), getString(R.string.character15Description), R.drawable.rainhardt));
-        heroes.add(new Personajes(getString(R.string.character16), getString(R.string.character16Description), R.drawable.roadhog));
-        heroes.add(new Personajes(getString(R.string.character17), getString(R.string.character17Description), R.drawable.winston));
-        heroes.add(new Personajes(getString(R.string.character18), getString(R.string.character18Description), R.drawable.zarya));
-        heroes.add(new Personajes(getString(R.string.character19), getString(R.string.character19Description), R.drawable.ana));
-        heroes.add(new Personajes(getString(R.string.character20), getString(R.string.character20Description), R.drawable.brigitte));
-        heroes.add(new Personajes(getString(R.string.character21), getString(R.string.character21Description), R.drawable.lucio));
-        heroes.add(new Personajes(getString(R.string.character22), getString(R.string.character22Description), R.drawable.mercy));
-        heroes.add(new Personajes(getString(R.string.character23), getString(R.string.character23Description), R.drawable.moira));
-        heroes.add(new Personajes(getString(R.string.character24), getString(R.string.character24Description), R.drawable.symmetra));
-        heroes.add(new Personajes(getString(R.string.character25), getString(R.string.character25Description), R.drawable.zenyatta));
-        heroes.add(new Personajes(getString(R.string.character26), getString(R.string.character26Description), R.drawable.tracer));
-        heroes.add(new Personajes(getString(R.string.character27), getString(R.string.character27Description), R.drawable.doomfist));
+        heroes.add(new Personajes(getString(R.string.character1), getString(R.string.character1Description), R.drawable.sombra, false));
+        heroes.add(new Personajes(getString(R.string.character2), getString(R.string.character2Description), R.drawable.bastion, false));
+        heroes.add(new Personajes(getString(R.string.character3), getString(R.string.character3Description), R.drawable.genji, false));
+        heroes.add(new Personajes(getString(R.string.character4), getString(R.string.character4Description), R.drawable.hanzo, false));
+        heroes.add(new Personajes(getString(R.string.character5), getString(R.string.character5Description), R.drawable.junkrat, false));
+        heroes.add(new Personajes(getString(R.string.character6), getString(R.string.character6Description), R.drawable.mccree, false));
+        heroes.add(new Personajes(getString(R.string.character7), getString(R.string.character7Description), R.drawable.mei, false));
+        heroes.add(new Personajes(getString(R.string.character8), getString(R.string.character8Description), R.drawable.pharah, false));
+        heroes.add(new Personajes(getString(R.string.character9), getString(R.string.character9Description), R.drawable.reaper, false));
+        heroes.add(new Personajes(getString(R.string.character10), getString(R.string.character10Description), R.drawable.soldier76, false));
+        heroes.add(new Personajes(getString(R.string.character11), getString(R.string.character11Description), R.drawable.torbjorn, false));
+        heroes.add(new Personajes(getString(R.string.character12), getString(R.string.character12Description), R.drawable.widowmaker, false));
+        heroes.add(new Personajes(getString(R.string.character13), getString(R.string.character13Description), R.drawable.d_va, false));
+        heroes.add(new Personajes(getString(R.string.character14), getString(R.string.character14Description), R.drawable.orisa, false));
+        heroes.add(new Personajes(getString(R.string.character15), getString(R.string.character15Description), R.drawable.rainhardt, false));
+        heroes.add(new Personajes(getString(R.string.character16), getString(R.string.character16Description), R.drawable.roadhog, false));
+        heroes.add(new Personajes(getString(R.string.character17), getString(R.string.character17Description), R.drawable.winston, false));
+        heroes.add(new Personajes(getString(R.string.character18), getString(R.string.character18Description), R.drawable.zarya, false));
+        heroes.add(new Personajes(getString(R.string.character19), getString(R.string.character19Description), R.drawable.ana, false));
+        heroes.add(new Personajes(getString(R.string.character20), getString(R.string.character20Description), R.drawable.brigitte, false));
+        heroes.add(new Personajes(getString(R.string.character21), getString(R.string.character21Description), R.drawable.lucio, false));
+        heroes.add(new Personajes(getString(R.string.character22), getString(R.string.character22Description), R.drawable.mercy, false));
+        heroes.add(new Personajes(getString(R.string.character23), getString(R.string.character23Description), R.drawable.moira, false));
+        heroes.add(new Personajes(getString(R.string.character24), getString(R.string.character24Description), R.drawable.symmetra, false));
+        heroes.add(new Personajes(getString(R.string.character25), getString(R.string.character25Description), R.drawable.zenyatta, false));
+        heroes.add(new Personajes(getString(R.string.character26), getString(R.string.character26Description), R.drawable.tracer, false));
+        heroes.add(new Personajes(getString(R.string.character27), getString(R.string.character27Description), R.drawable.doomfist, false));
 
 
+
+        return heroes.toArray(new Personajes[heroes.size()]);
+    }
+
+    private Personajes[] createCharactersListModes1() {
+
+        List<Personajes> heroes = new ArrayList<>();
 
         return heroes.toArray(new Personajes[heroes.size()]);
     }

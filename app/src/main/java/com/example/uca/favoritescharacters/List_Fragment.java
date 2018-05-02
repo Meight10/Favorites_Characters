@@ -5,11 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,18 @@ public class List_Fragment extends Fragment{
 
     private Personajes[] charactersModels;
     private OnListFragmentInteractionListener interactionListener;
+    private List_HeroesRecyclerViewAdapter heroesRecyclerViewAdapter;
+    private ViewPager vp;
+
+    private ImageView favoriteIcon;
+
+    public void setFavoriteIcon(ImageView favoriteIcon){
+        this.favoriteIcon = favoriteIcon;
+    }
+
+    public ImageView getFavoriteIcon(){
+        return favoriteIcon;
+    }
 
     public List_Fragment(){ }
 
@@ -42,6 +56,8 @@ public class List_Fragment extends Fragment{
             throw new RuntimeException("You must to send a dummyModels ");
         }
         charactersModels = (Personajes[]) getArguments().getParcelableArray(KEY_MODEL);
+
+
     }
 
     @Override
@@ -51,7 +67,9 @@ public class List_Fragment extends Fragment{
         Context ctx = rootView.getContext();
         RecyclerView recyclerView = (RecyclerView)rootView;
         recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
-        recyclerView.setAdapter(new List_HeroesRecyclerViewAdapter(charactersModels, interactionListener));
+        vp = (ViewPager)getActivity().findViewById(R.id.container);
+        heroesRecyclerViewAdapter = new List_HeroesRecyclerViewAdapter(vp, charactersModels, interactionListener);
+        recyclerView.setAdapter(heroesRecyclerViewAdapter);
 
         return rootView;
     }
@@ -77,4 +95,6 @@ public class List_Fragment extends Fragment{
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Personajes item);
     }
+
+
 }
