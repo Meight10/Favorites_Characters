@@ -1,6 +1,7 @@
 package com.example.uca.favoritescharacters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -23,8 +24,8 @@ public class List_Fragment extends Fragment{
 
     private static final String KEY_MODEL = "KEY_MODEL";
 
-    private Personajes[] charactersModels;
-    private OnListFragmentInteractionListener interactionListener;
+    //private Personajes[] charactersModels;
+    //private OnListFragmentInteractionListener interactionListener;
     private List_HeroesRecyclerViewAdapter heroesRecyclerViewAdapter;
     private ViewPager vp;
 
@@ -40,15 +41,15 @@ public class List_Fragment extends Fragment{
 
     public List_Fragment(){ }
 
-    public static List_Fragment newInstance(Personajes[] charactersModels) {
+    /*public static List_Fragment newInstance(Personajes[] charactersModels) {
         List_Fragment fragment = new List_Fragment();
         Bundle args = new Bundle();
         args.putParcelableArray(KEY_MODEL, charactersModels);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -58,22 +59,22 @@ public class List_Fragment extends Fragment{
         charactersModels = (Personajes[]) getArguments().getParcelableArray(KEY_MODEL);
 
 
-    }
+    }*/
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.from(container.getContext()).inflate(R.layout.tab1_main, container, false);
 
         Context ctx = rootView.getContext();
         RecyclerView recyclerView = (RecyclerView)rootView;
         recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
-        vp = (ViewPager)getActivity().findViewById(R.id.container);
-        heroesRecyclerViewAdapter = new List_HeroesRecyclerViewAdapter(vp, charactersModels, interactionListener);
+        vp = (ViewPager)getActivity().findViewById(R.id.viewpager);
+        heroesRecyclerViewAdapter = new List_HeroesRecyclerViewAdapter(vp);
         recyclerView.setAdapter(heroesRecyclerViewAdapter);
 
         return rootView;
     }
-
+/*
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -94,7 +95,7 @@ public class List_Fragment extends Fragment{
 
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Personajes item);
-    }
+    }*/
 
 
 }

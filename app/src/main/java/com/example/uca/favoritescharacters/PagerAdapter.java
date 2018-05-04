@@ -1,18 +1,22 @@
 package com.example.uca.favoritescharacters;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
 
-    private int numTabs;
+    //private int numTabs;
 
     private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> stringList = new ArrayList<>();
     private Personajes[] heroesListt0;
     private Personajes[] heroesListt1;
 
@@ -21,11 +25,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     }
 
 
-    public PagerAdapter(FragmentManager fm, int numTabs) {
+    /*public PagerAdapter(FragmentManager fm, int numTabs) {
         super(fm);
         this.numTabs = numTabs;
 
-    }
+    }*/
 
     @Override
     public Fragment getItem(int position) {
@@ -35,10 +39,22 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return numTabs;
+        return stringList.size();
     }
 
-    public void addFragment(Fragment fragment) {
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return stringList.get(position);
+    }
+
+    public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
+        stringList.add(title);
     }
 }

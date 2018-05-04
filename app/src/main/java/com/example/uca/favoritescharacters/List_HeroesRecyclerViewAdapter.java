@@ -17,17 +17,17 @@ import java.util.List;
 
 public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_HeroesRecyclerViewAdapter.ViewHolderPersonajes>{
 
-    private final Personajes [] listaPersonajes;
-    private final List_Fragment.OnListFragmentInteractionListener interactionListener;
+   // private final Personajes [] listaPersonajes;
+    //private final List_Fragment.OnListFragmentInteractionListener interactionListener;
     private MainActivity activity;
     static final String KEY_TITLE = "TITLE";
     private ViewPager viewPager;
 
 
-    public List_HeroesRecyclerViewAdapter(ViewPager viewPager, Personajes[] listaPersonajes, List_Fragment.OnListFragmentInteractionListener interactionListener) {
+    public List_HeroesRecyclerViewAdapter(ViewPager viewPager) {
         this.viewPager = viewPager;
-        this.listaPersonajes = listaPersonajes;
-        this.interactionListener = interactionListener;
+        //this.listaPersonajes = listaPersonajes;
+        //this.interactionListener = interactionListener;
 
     }
 
@@ -36,43 +36,46 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
 
     @Override
     public ViewHolderPersonajes onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_list, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tab1_list, parent, false);
 
         return new ViewHolderPersonajes(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolderPersonajes holder, final int position) {
-       Personajes heroes = listaPersonajes[position];
-       holder.heroeItem = heroes;
-       holder.nombre.setText(heroes.getName());
-       holder.descripcion.setText(heroes.getDescription());
-       holder.foto.setImageResource(heroes.getImagen());
+       holder.nombre.setText(MainActivity.charactersListModels0.get(position).getName());
+       holder.descripcion.setText(MainActivity.charactersListModels0.get(position).getDescription());
+       holder.foto.setImageResource(MainActivity.charactersListModels0.get(position).getImagen());
+
+        if (MainActivity.charactersListModels0.get(position).getFavorite()) {
+            holder.favoriteIcon.setImageResource(R.drawable.ic_launcher);
+        } else {
+            holder.favoriteIcon.setImageResource(R.drawable.ic_overwatchicon);
+        }
 
 
-
-       holder.view.setOnClickListener(new View.OnClickListener() {
+       /*holder.view.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                if (null != interactionListener) {
                    // Notify the active callbacks interface (the activity, if the
                    // fragment is attached to one) that an item has been selected.
-                   interactionListener.onListFragmentInteraction(holder.heroeItem);
+                   interactionListener.onListFragmentInteraction(MainActivity.charactersListModels0.get(position));
                }
            }
-       });
+       });*/
 
        holder.favoriteIcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if(listaPersonajes[position].getFavorite()){
+                if(MainActivity.charactersListModels0.get(position).getFavorite()){
                     holder.favoriteIcon.setImageResource(R.drawable.ic_overwatchicon);
-                    MainActivity.charactersListModels1.remove(MainActivity.charactersListModels0[position]);
+                    MainActivity.charactersListModels1.remove(MainActivity.charactersListModels0.get(position));
                     viewPager.getAdapter().notifyDataSetChanged();
-                    MainActivity.charactersListModels0[position].setFavorite(false);
+                    MainActivity.charactersListModels0.get(position).setFavorite(false);
                 }else{
                     holder.favoriteIcon.setImageResource(R.drawable.ic_launcher);
-                    MainActivity.charactersListModels1.add(MainActivity.charactersListModels0[position]);
-                    MainActivity.charactersListModels0[position].setFavorite(true);
+                    MainActivity.charactersListModels1.add(MainActivity.charactersListModels0.get(position));
+                    MainActivity.charactersListModels0.get(position).setFavorite(true);
                     viewPager.getAdapter().notifyDataSetChanged();
                 }
 
@@ -85,7 +88,7 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
 
     @Override
     public int getItemCount() {
-        return listaPersonajes.length;
+        return MainActivity.charactersListModels0.size();
     }
 
     public static class ViewHolderPersonajes extends RecyclerView.ViewHolder{
@@ -110,6 +113,7 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
         }
 
     }
+
 
 
 }
