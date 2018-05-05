@@ -18,16 +18,16 @@ import java.util.List;
 public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_HeroesRecyclerViewAdapter.ViewHolderPersonajes>{
 
    // private final Personajes [] listaPersonajes;
-    //private final List_Fragment.OnListFragmentInteractionListener interactionListener;
+    private final List_Fragment.OnListFragmentInteractionListener interactionListener;
     private MainActivity activity;
     static final String KEY_TITLE = "TITLE";
     private ViewPager viewPager;
 
 
-    public List_HeroesRecyclerViewAdapter(ViewPager viewPager) {
+    public List_HeroesRecyclerViewAdapter(ViewPager viewPager, List_Fragment.OnListFragmentInteractionListener interactionListener) {
         this.viewPager = viewPager;
         //this.listaPersonajes = listaPersonajes;
-        //this.interactionListener = interactionListener;
+        this.interactionListener = interactionListener;
 
     }
 
@@ -54,7 +54,7 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
         }
 
 
-       /*holder.view.setOnClickListener(new View.OnClickListener() {
+       holder.view.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                if (null != interactionListener) {
@@ -63,7 +63,7 @@ public class List_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List_He
                    interactionListener.onListFragmentInteraction(MainActivity.charactersListModels0.get(position));
                }
            }
-       });*/
+       });
 
        holder.favoriteIcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

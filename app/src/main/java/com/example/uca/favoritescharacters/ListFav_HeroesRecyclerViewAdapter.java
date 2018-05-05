@@ -42,7 +42,7 @@ public class ListFav_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List
         } else {
             holder.favoriteIcon.setImageResource(R.drawable.ic_overwatchicon);
         }
-        holder.foto.setOnClickListener(new View.OnClickListener() {
+        holder.favoriteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 holder.favoriteIcon.setImageResource(R.drawable.ic_overwatchicon);
@@ -55,7 +55,7 @@ public class ListFav_HeroesRecyclerViewAdapter extends RecyclerView.Adapter<List
 
     @Override
     public int getItemCount() {
-        return 0;
+        return favCharacteresList.size();
     }
 
     public class ViewHolderPersonajesFav extends RecyclerView.ViewHolder {

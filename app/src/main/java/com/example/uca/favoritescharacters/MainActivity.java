@@ -28,7 +28,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements List_Fragment.OnListFragmentInteractionListener{
 
 
     private ImageView image;
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+       // TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        //ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         //fill the list
         if(savedInstanceState == null){
             charactersListModels0 = new ArrayList<>();
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity{
             createCharactersListModes0();
         }
 
-        List_Fragment fragment1 = new List_Fragment();
+        /*List_Fragment fragment1 = new List_Fragment();
         ListFav_Fragment fragment2 = new ListFav_Fragment();
         System.out.println(charactersListModels1.toString() + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
@@ -62,7 +62,9 @@ public class MainActivity extends AppCompatActivity{
         adapter.addFragment(fragment2, getString(R.string.tab_text_2));
         viewPager.setAdapter(adapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);*/
+
+        initComponents();
 
     }
 
@@ -72,7 +74,10 @@ public class MainActivity extends AppCompatActivity{
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-    /*private void initComponents(){
+    private void initComponents(){
+
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         //tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_1));
         //tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_2));
@@ -90,7 +95,7 @@ public class MainActivity extends AppCompatActivity{
 
         //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //tabLayout.addOnTabSelectedListener(getOnTabSelectedListener(viewPager));
-    }*/
+    }
 
 
 
@@ -122,15 +127,15 @@ public class MainActivity extends AppCompatActivity{
     }*/
 
 
-    /*/**
+    /**
      * Listener that comunicate fragment / recycler with this activity
      * @param model
      */
-   /* @Override
+   @Override
     public void onListFragmentInteraction(Personajes model) {
         // the user clicked on this item over the list
         Toast.makeText(MainActivity.this, Personajes.class.getSimpleName() + ":" + model.getName() + " - "  +model.getDescription(), Toast.LENGTH_LONG).show();
-    }*/
+    }
 
     // model for test purpose
     private void createCharactersListModes0() {

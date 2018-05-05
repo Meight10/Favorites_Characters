@@ -25,7 +25,7 @@ public class List_Fragment extends Fragment{
     private static final String KEY_MODEL = "KEY_MODEL";
 
     //private Personajes[] charactersModels;
-    //private OnListFragmentInteractionListener interactionListener;
+    private OnListFragmentInteractionListener interactionListener;
     private List_HeroesRecyclerViewAdapter heroesRecyclerViewAdapter;
     private ViewPager vp;
 
@@ -49,7 +49,7 @@ public class List_Fragment extends Fragment{
         return fragment;
     }*/
 
-   /* @Override
+   /*@Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -64,17 +64,17 @@ public class List_Fragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.from(container.getContext()).inflate(R.layout.tab1_main, container, false);
-
+        Bundle args = new Bundle();
         Context ctx = rootView.getContext();
         RecyclerView recyclerView = (RecyclerView)rootView;
         recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
         vp = (ViewPager)getActivity().findViewById(R.id.viewpager);
-        heroesRecyclerViewAdapter = new List_HeroesRecyclerViewAdapter(vp);
+        heroesRecyclerViewAdapter = new List_HeroesRecyclerViewAdapter(vp, interactionListener);
         recyclerView.setAdapter(heroesRecyclerViewAdapter);
 
         return rootView;
     }
-/*
+
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -95,7 +95,7 @@ public class List_Fragment extends Fragment{
 
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Personajes item);
-    }*/
+    }
 
 
 }
