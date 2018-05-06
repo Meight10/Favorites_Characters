@@ -8,5 +8,5 @@
     android:id="@+id/recyclerviewFav"
     app:layoutManager="LinearLayoutManager"
     android:background="@color/background"
-    tools:context="com.example.uca.favoritescharacters.MainActivity"
+    tools:context="com.example.uca.favoritescharacters.processes.MainActivity"
     tools:listitem="@layout/tab1_list" />
