@@ -1,4 +1,4 @@
-package com.example.uca.favoritescharacters;
+package com.example.uca.favoritescharacters.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
