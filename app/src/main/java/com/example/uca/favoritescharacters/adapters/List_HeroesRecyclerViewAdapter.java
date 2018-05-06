@@ -1,4 +1,4 @@
-package com.example.uca.favoritescharacters;
+package com.example.uca.favoritescharacters.adapters;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.example.uca.favoritescharacters.model.Personajes;
+import com.example.uca.favoritescharacters.R;
+import com.example.uca.favoritescharacters.fragments.List_Fragment;
 
 import java.util.ArrayList;
 
