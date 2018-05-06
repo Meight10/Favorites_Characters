@@ -1,4 +1,4 @@
-package com.example.uca.favoritescharacters;
+package com.example.uca.favoritescharacters.processes;
 
 import android.support.design.widget.TabLayout;
 
@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.example.uca.favoritescharacters.adapters.PagerAdapter;
+import com.example.uca.favoritescharacters.model.Personajes;
+import com.example.uca.favoritescharacters.R;
+import com.example.uca.favoritescharacters.fragments.List_Fragment;
 
 import java.util.ArrayList;
 
