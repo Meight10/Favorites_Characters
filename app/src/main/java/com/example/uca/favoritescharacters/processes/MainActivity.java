@@ -1,41 +1,22 @@
 package com.example.uca.favoritescharacters;
 
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements List_Fragment.OnListFragmentInteractionListener{
-
-
-    private ImageView image;
-    public static List<Personajes> charactersListModels0;
-    public static List<Personajes> charactersListModels1;
+public class MainActivity extends AppCompatActivity implements List_Fragment.OnListFragmentInteractionListener, List_Fragment.OnListFragmentInteractionIcon{
 
 
+    public static ArrayList<Personajes> charactersListModels0;
+    public static ArrayList<Personajes> charactersListModels1;
+
+    public static PagerAdapter adapter;
 
 
     @Override
@@ -43,9 +24,6 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
-        //ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        //fill the list
         if(savedInstanceState == null){
             charactersListModels0 = new ArrayList<>();
             charactersListModels1 = new ArrayList<>();
@@ -53,16 +31,6 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
             createCharactersListModes0();
         }
 
-        /*List_Fragment fragment1 = new List_Fragment();
-        ListFav_Fragment fragment2 = new ListFav_Fragment();
-        System.out.println(charactersListModels1.toString() + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-
-        adapter.addFragment(fragment1, getString(R.string.tab_text_1));
-        adapter.addFragment(fragment2, getString(R.string.tab_text_2));
-        viewPager.setAdapter(adapter);
-
-        tabLayout.setupWithViewPager(viewPager);*/
 
         initComponents();
 
@@ -82,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         //tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_1));
         //tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_2));
 
-        List_Fragment fragment1 = new List_Fragment();
-        ListFav_Fragment fragment2 = new ListFav_Fragment();
+        List_Fragment fragment1 = List_Fragment.newInstance("s0", charactersListModels0);
+        List_Fragment fragment2 = List_Fragment.newInstance("s1", charactersListModels1);
         System.out.println(charactersListModels1.toString() + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        adapter = new PagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(fragment1, getString(R.string.tab_text_1));
         adapter.addFragment(fragment2, getString(R.string.tab_text_2));
@@ -93,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
 
         tabLayout.setupWithViewPager(viewPager);
 
-        //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        //tabLayout.addOnTabSelectedListener(getOnTabSelectedListener(viewPager));
     }
 
 
@@ -134,13 +100,28 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
    @Override
     public void onListFragmentInteraction(Personajes model) {
         // the user clicked on this item over the list
-        Toast.makeText(MainActivity.this, Personajes.class.getSimpleName() + ":" + model.getName() + " - "  +model.getDescription(), Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, Personajes.class.getSimpleName() + " : " + model.getName() + " - "  +model.getDescription(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onListFragmentInteractionIcon(Personajes item, int position) {
+        int index = charactersListModels0.indexOf(item);
+       if(item.getFavorite()){
+           charactersListModels1.remove(charactersListModels0.get(index));
+           charactersListModels0.get(index).setFavorite(false);
+           System.out.println("CHANGEED TO FALSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+           adapter.notifyDataSetChanged();
+       }else{
+           charactersListModels1.add(charactersListModels0.get(index));
+           charactersListModels0.get(index).setFavorite(true);
+           System.out.println("CHANGEED TO TRUE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+           adapter.notifyDataSetChanged();
+       }
+
     }
 
     // model for test purpose
     private void createCharactersListModes0() {
-
-        //List<Personajes> heroes =  new ArrayList<>();
 
         charactersListModels0.add(new Personajes(getString(R.string.character1), getString(R.string.character1Description), R.drawable.sombra, false));
         charactersListModels0.add(new Personajes(getString(R.string.character2), getString(R.string.character2Description), R.drawable.bastion, false));
@@ -170,9 +151,6 @@ public class MainActivity extends AppCompatActivity implements List_Fragment.OnL
         charactersListModels0.add(new Personajes(getString(R.string.character26), getString(R.string.character26Description), R.drawable.tracer, false));
         charactersListModels0.add(new Personajes(getString(R.string.character27), getString(R.string.character27Description), R.drawable.doomfist, false));
 
-
-
-       // return heroes.toArray(new Personajes[heroes.size()]);
     }
 
 
